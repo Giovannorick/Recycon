@@ -55,12 +55,15 @@ class UserController extends Controller
 
     public function login(Request $r)
     {
-        $validate = [
+        $validate = Auth::attempt([
             'email' => $r->email,
             'password' => $r->password
-        ];
+        ],
 
-        if($r->remember) {
+        $r -> remember_me
+        );
+
+        if($r->remember_me) {
             Cookie::queue('email', $r->email);
             Cookie::queue('password', $r->password);
         }else{
@@ -68,7 +71,7 @@ class UserController extends Controller
             Cookie::queue(Cookie::forget('password'));
         }
 
-        if (Auth::attempt($validate)) {
+        if ($validate) {
             return view('home');
         }
 

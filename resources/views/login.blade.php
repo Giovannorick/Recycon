@@ -7,15 +7,15 @@
       @csrf
       <div class="mb-4">
           <label for="email" class="form-label text-primary fw-normal">Email Address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email"  value={{Cookie::get('email') != null ? Cookie::get('email') : ""}}>
       </div>
       <div class="mb-4">
         <label for="password" class="form-label text-primary fw-normal">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" value={{Cookie::get('email') != null ? Cookie::get('password') : ""}}>
       </div>
       <div class="mb-1 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label text-primary" for="exampleCheck1">Remember Me</label>
+        <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
+        <label class="form-check-label text-primary" for="remember_me">Remember me</label>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary w-25 text-center">Login</button>
