@@ -32,6 +32,8 @@ Recycon empowers sellers by providing them with a dedicated dashboard. Admin can
 ### Environmental Impact Tracker 
 Recycon goes beyond being just a marketplace by incorporating an environmental impact tracker. This feature quantifies the positive impact made by customers through their purchases, such as reducing carbon emissions, waste, and overall resource consumption.
 
+## 
+
 We believe that Recycon has the potential to contribute significantly to the global effort towards sustainability and environmental preservation. By promoting the recycling and reuse of products, we aim to create a community that values conscious consumption and takes responsibility for our planet's well-being.
 
 This GitHub repository serves as a collaborative space for developers interested in contributing to the project's enhancement and further development. Feel free to explore the codebase, contribute to bug fixes, suggest new features, or propose improvements to the existing functionality.
