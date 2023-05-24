@@ -18,29 +18,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav  me-auto mb-3 mb-lg-1">
           <li class="nav-item ">
-            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+            <a class="nav-link active text-warning" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="#">Show Product</a>
+            <a class="nav-link text-warning" aria-current="page" href="/showProduct">Show Product</a>
           </li>
       
           @auth
             @if (Auth::user()->isAdmin == true)
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Manage Item
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item text-dark" href="#">View Item</a></li>
-                  <li><a class="dropdown-item text-dark" href="#">Add Item</a></li>
+                  <li><a class="dropdown-item " href="/viewItem">View Item</a></li>
+                  <li><a class="dropdown-item " href="/addItem">Add Item</a></li>
                 </ul>
               </li>
             @else
               <li class="nav-item">
-                <a class="nav-link text-white" aria-current="page" href="#">My Cart</a>
+                <a class="nav-link text-warning" aria-current="page" href="/myCartItems">My Cart</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" aria-current="page" href="#">Transaction History</a>
+                <a class="nav-link text-warning" aria-current="page" href="/transactionHistory">Transaction History</a>
               </li>
             @endif
           @endauth
@@ -48,38 +48,38 @@
 
           @auth
             <ul class="w-50 mb-3 mb-lg-1">
-              <form class="d-flex" role="search">
-                <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn  btn-sm btn-outline-light" type="submit">Search</button>
+              <form class="d-flex" action="/search">
+                <input class="form-control me-3 " type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-sm btn-outline-warning" type="submit">Search</button>
               </form>
             </ul>
             
             <ul class="navbar-nav ms-auto mb-3 mb-lg-1">   
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Profile
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">{{Auth::user()->name}}</a></li>
-                  <li><a class="dropdown-item" href="/editProfile">Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="/editProfile/{{Auth::user()->id}}">Edit Profile</a></li>
                   <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
                 </ul>
               </li>
       
               <form action="/logout" method="get">
-                <button class="btn btn-outline-light" type="submit" value="logout">Log Out</button>
+                <button class="btn btn-outline-warning" type="submit" value="logout">Log Out</button>
               </form>
             </ul>
           @else
             <ul class="navbar-nav ms-auto mb-3 mb-lg-1"> 
               <li class="nav-item">
                 <a class="nav-link active fw-bold" aria-current="page" href="/login">
-                    <button class="btn btn-outline-light">Login</button>
+                    <button class="btn btn-outline-warning">Login</button>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/register">
-                  <button class="btn btn-outline-light">Register</button>
+                  <button class="btn btn-outline-warning">Register</button>
                 </a>
               </li>
             </ul>
@@ -87,18 +87,20 @@
       </div>
     </div>
   </nav>
+</header>
+
 
 {{-- content --}}
- <div class="flex-grow-3 p-2">
-  <div class="bg-light bg-gradient" style="height: auto">
+ <div class="flex-grow-1 p-2" style="background-color: #f9f8f4; height: auto;">
+  <div class="py-3" style="background-color: #f9f8f4;">
     @yield('body')
   </div>
 </div>
 
 {{-- footer --}}
 <footer>
-  <div class="sticky-bottom bg-dark bg-gradient text-center text-white py-2" style="height: 100%">
-    <h5 class="py-3 my-2">&copy; 2022 Copyright LC062</h5>
+  <div class="fixed bg-dark bg-gradient text-center text-white py-3">
+    <h5 class="py-2 my-3 text-warning">&copy; 2022 Copyright LC062</h5>
   </div>
 </footer>
 </body>

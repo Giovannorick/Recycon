@@ -7,13 +7,13 @@
   </div>
 @endif
 
-<form class="d-flex justify-content-center my-5 px-5 py-5" action="/editProfile" method="POST">
+<form class="d-flex justify-content-center my-5 px-5 py-5" action="/editProfile/{{Auth::user()->id}}" method="POST">
   <div class="col-6 shadow p-5 mb-5 bg-dark bg-gradient rounded">
-    <h1 class="display-4 text-primary text-center fw-normal">Edit Profile</h1>
+    <h1 class="display-4 text-warning text-center fw-normal">Edit Profile</h1>
       @csrf
       <div class="mb-4">
-          <label for="name" class="form-label text-primary fw-normal">New Username</label>
-          <input type="name" class="form-control" id="name" name="name" placeholder="New Username">
+          <label for="name" class="form-label text-warning fw-normal">New Username</label>
+          <input type="name" class="form-control" id="name" name="name" placeholder="New Username" value="{{Auth::user()->name}}">
 
         @if ($errors->has('name'))
             @foreach ($errors->get('name') as $error)
@@ -21,9 +21,10 @@
             @endforeach
         @endif
       </div>
+
       <div class="mb-4">
-        <label for="email" class="form-label text-primary fw-normal">New Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="New Email">
+        <label for="email" class="form-label text-warning fw-normal">New Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="New Email" value="{{Auth::user()->email}}">
         
         @if ($errors->has('email'))
             @foreach ($errors->get('email') as $error)
@@ -31,6 +32,7 @@
             @endforeach
         @endif
       </div>
+      
       <div class="text-end">
         <button type="submit" class="btn btn-warning w-0 text-center">Save</button>
       </div>

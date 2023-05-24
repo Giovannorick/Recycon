@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserCart;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,10 @@ class UserController extends Controller
         $user->created_at = Carbon::now();
 
         $user->save();
+
+        $cart = new UserCart();
+        $cart->UserID = $user->id;
+        $cart->save();
 
         return back()->with("status", "Register User Successfully!");
     }
@@ -133,6 +138,11 @@ class UserController extends Controller
 
         if ($validate->fails()) {
             return back()->withErrors($validate);
+        }
+
+        $password = Auth::user()->password;
+        if(!(Hash::check($r->oldPass, $password))) {
+            return back()->withErrors("Password Doesn't Match");
         }
 
         $user = User::find(Auth::user()->id);

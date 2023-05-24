@@ -1,6 +1,6 @@
 @extends('template')
 @section('title', 'Change Password')
-@section('body') 
+@section('body')
 
 @if (session('status'))
   <div class="alert alert-success text-center rounded justify-content-center" role="alert">
@@ -10,10 +10,10 @@
 
 <form class="d-flex justify-content-center my-5 px-5 py-5" action="/changePassword" method="POST">
   <div class="col-6 shadow p-5 mb-5 bg-dark bg-gradient rounded">
-    <h1 class="display-4 text-primary text-center fw-normal">Change Password</h1>
+    <h1 class="display-4 text-warning text-center fw-normal">Change Password</h1>
       @csrf
       <div class="mb-4">
-          <label for="oldPass" class="form-label text-primary fw-normal">Old Password</label>
+          <label for="oldPass" class="form-label text-warning fw-normal">Old Password</label>
           <input type="password" class="form-control" id="oldPass" name="oldPass" placeholder="Old Password">
 
         @if ($errors->has('oldPass'))
@@ -23,9 +23,9 @@
         @endif
       </div>
       <div class="mb-4">
-        <label for="newPass" class="form-label text-primary fw-normal">New Password</label>
+        <label for="newPass" class="form-label text-warning fw-normal">New Password</label>
         <input type="password" class="form-control" id="newPass" name="newPass" placeholder="New Password">
-        
+
         @if ($errors->has('newPass'))
             @foreach ($errors->get('newPass') as $error)
                 <div id="validateNewPass" class="form-text" style="color: red">{{ $error }}</div>
@@ -33,9 +33,9 @@
         @endif
       </div>
       <div class="mb-4">
-        <label for="confirmPass" class="form-label text-primary fw-normal">Confirm New Password</label>
+        <label for="confirmPass" class="form-label text-warning fw-normal">Confirm New Password</label>
         <input type="password" class="form-control" id="confirmPass" name="confirmPass" placeholder="Confirm New Password">
-        
+
         @if ($errors->has('confirmPass'))
             @foreach ($errors->get('confirmPass') as $error)
                 <div id="validateConfirmPass" class="form-text" style="color: red">{{ $error }}</div>
@@ -45,6 +45,9 @@
       <div class="text-end">
         <button type="submit" class="btn btn-warning w-0 text-center">Save</button>
       </div>
+      @if ($errors->any())
+        <p class="text-white">{{$errors->first()}}</p>
+      @endif
   </div>
 </form>
 @endsection

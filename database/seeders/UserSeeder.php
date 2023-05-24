@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@recycon.com',
-            'password' => bcrypt('Admin'),
+            'password' => bcrypt('Admin123'),
             'isAdmin' => true
         ]);
 
@@ -25,6 +25,13 @@ class UserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => bcrypt('User123'),
+            'isAdmin' => false
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Albert',
+            'email' => 'albert@gmail.com',
+            'password' => bcrypt('123456'),
             'isAdmin' => false
         ]);
     }

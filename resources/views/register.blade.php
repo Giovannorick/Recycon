@@ -9,10 +9,10 @@
 
 <form class="d-flex justify-content-center my-5 px-5 py-5" action="/register" method="POST">
     <div class="col-6 shadow p-5 mb-3 bg-dark bg-gradient rounded">
-      <h1 class="display-4 text-primary text-center fw-normal">REGISTER FORM</h1>
+      <h1 class="display-4 text-warning text-center fw-normal">REGISTER FORM</h1>
         @csrf
         <div class="mb-4">
-            <label for="name" class="form-label text-primary fw-normal">Name</label>
+            <label for="name" class="form-label text-warning fw-normal">Name</label>
             <input type="name" class="form-control" id="name" name="name" placeholder="Full Name">
 
             @if ($errors->has('name'))
@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-4">
-          <label for="email" class="form-label text-primary fw-normal">Email</label>
+          <label for="email" class="form-label text-warning fw-normal">Email</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="Email">
           
           @if ($errors->has('email'))
@@ -34,7 +34,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="pass" class="form-label text-primary fw-normal">Password</label>
+            <label for="pass" class="form-label text-warning fw-normal">Password</label>
             <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
 
             @if ($errors->has('pass'))
@@ -45,7 +45,7 @@
         </div>
 
         <div class="mb-5">
-            <label for="confirmPass" class="form-label text-primary fw-normal">Confirm Password</label>
+            <label for="confirmPass" class="form-label text-warning fw-normal">Confirm Password</label>
             <input type="password" class="form-control" id="confirmPass" name="confirmPass" placeholder="Confirm Password">
 
             @if ($errors->has('confirmPass'))
@@ -56,7 +56,7 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary w-25 text-center">Register</button>
+          <button type="submit" class="btn btn-warning w-25 text-center">Register</button>
         </div>
     </div>
 </form>
